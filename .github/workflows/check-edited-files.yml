@@ -22,7 +22,7 @@ jobs:
     name: Check py changes
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ needs.steps.check-change.outputs.my-changes }}
+      result: ${{ needs.steps.check-change.outputs.my_changes }}
     permissions:
       contents: write
       pull-requests: write
@@ -33,12 +33,12 @@ jobs:
         id: check-change
         with:
           filters: |
-            my-changes:
+            my_changes:
               - 'folder/**/*.py'
 
       - name: check output
         env: 
-          MYOUTPUT: ${{ steps.check-change.outputs.my-changes }}
+          MYOUTPUT: ${{ steps.check-change.outputs.my_changes }}
         run: echo $MYOUTPUT
 
   test-job:
