@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: if check
-        if: ${{ needs.job1.outputs.result == 'true' }}
+        if: ${{ needs.job1.outputs.result == 'false' }}
         run: echo "result is false"
 
       - name: Print my-changes aka. ANYCHANGE
@@ -52,4 +52,4 @@ jobs:
     needs: job1
     uses: ./.github/workflows/main.yml
     with:
-      myboolean: ${{ needs.job1.outputs.result == 'false' }}
+      myboolean: ${{ needs.job1.outputs.result == 'true' }}
