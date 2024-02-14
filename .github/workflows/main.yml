@@ -2,6 +2,11 @@ name: CI
 
 on:
   workflow_dispatch:
+    inputs:
+      myboolean:
+        required: false
+        type: boolean
+        default: true
   workflow_call:
     inputs:
       myboolean:
