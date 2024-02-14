@@ -1,0 +1,67 @@
+name: CI
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      myboolean:
+        required: false
+        type: boolean
+        default: true
+
+jobs:
+  test-job:
+    name: Test Job
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Step runs
+        id: running-step
+        run: echo Hello, world!
+      
+      - name: Step boolean true
+        if: ${{ inputs.myboolean }}
+        run: echo runned
+
+      - name: Step fails
+        run: echo fails && exit 1
+        
+      - name: Step always
+        if: always()
+        run: echo runs always
+        
+      - name: Step always + outcome.success
+        if: ${{ always() && steps.running-step.outcome == 'success' }}
+        run: echo runned
+
+      - name: Step always + outcome.failure
+        if: ${{ always() && steps.running-step.outcome == 'failure' }}
+        run: echo runned
+        
+      - name: Step !cancelled
+        if: ${{ !cancelled() }}
+        run: echo runned
+
+      - name: Step !cancelled + outcome.success
+        if: ${{ !cancelled() && steps.running-step.outcome == 'success' }}
+        run: echo runned
+        
+      - name: Step !cancelled + outcome.failure
+        if: ${{ !cancelled() && steps.running-step.outcome == 'failure' }}
+        run: echo runned
+
+      - name: Step myboolean true + !cancelled 
+        if: ${{ inputs.myboolean && !cancelled()  }}
+        run: echo runned
+        
+      - name: Step !cancelled + myboolean true
+        if: ${{ !cancelled() && inputs.myboolean }}
+        run: echo runned
+
+      - name: Step without condition
+        run: echo Bye, Bye!
