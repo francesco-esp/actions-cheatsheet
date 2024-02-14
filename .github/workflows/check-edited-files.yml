@@ -18,7 +18,7 @@ on:
 
 
 jobs:
-  changes-job:
+  changes_job:
     name: Check py changes
     runs-on: ubuntu-latest
     outputs:
@@ -27,7 +27,7 @@ jobs:
       contents: write
       pull-requests: write
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       
       - uses: dorny/paths-filter@v2
         id: check-change
@@ -45,7 +45,7 @@ jobs:
     name: Test Job
     runs-on: ubuntu-latest
     env:
-      ANYCHANGE: ${{ needs.changes-job.outputs.result }}
+      ANYCHANGE: ${{ needs.changes_job.outputs.result }}
 
     steps:
       - uses: actions/checkout@v3
