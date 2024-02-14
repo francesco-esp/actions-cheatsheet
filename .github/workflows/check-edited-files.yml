@@ -5,8 +5,8 @@ on:
   push:
 
 jobs:
-  changes_job:
-    name: Check py changes
+  job1:
+    name: Check py diff
     runs-on: ubuntu-latest
     outputs:
       result: ${{ needs.steps.check-change.outputs.my_changes }}
@@ -28,8 +28,8 @@ jobs:
           MYOUTPUT: ${{ steps.check-change.outputs.my_changes }}
         run: echo $MYOUTPUT
 
-  test-job:
-    name: Test Job
+  job2:
+    name: Output output
     runs-on: ubuntu-latest
     permissions:
       contents: write
