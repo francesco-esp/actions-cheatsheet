@@ -39,7 +39,7 @@ jobs:
     name: Test Job
     runs-on: ubuntu-latest
     env:
-      ANYCHANGE: ${{ needs.my-changes.outputs.result }}
+      ANYCHANGE: ${{ needs.changes-job.outputs.result }}
 
     steps:
       - uses: actions/checkout@v3
