@@ -49,6 +49,7 @@ jobs:
 
   job3:
     name: Job 3
+    needs: job1
     uses: ./.github/workflows/main.yml
     with:
       myboolean: ${{ needs.job1.outputs.result == 'false' }}
