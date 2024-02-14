@@ -30,6 +30,7 @@ jobs:
 
   job2:
     name: Output output
+    needs: job1
     runs-on: ubuntu-latest
     permissions:
       contents: write
