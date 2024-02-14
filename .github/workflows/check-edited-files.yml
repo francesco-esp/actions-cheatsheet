@@ -21,11 +21,11 @@ jobs:
   changes-job:
     name: Check py changes
     runs-on: ubuntu-latest
+    outputs:
+      result: ${{ steps.check-change.outputs.my-changes }}
     permissions:
       contents: write
       pull-requests: write
-    outputs:
-      result: ${{ steps.check-change.outputs.my-changes }}
     steps:
       - uses: actions/checkout@v2
       
@@ -52,8 +52,7 @@ jobs:
 
       - name: Print my-changes aka. ANYCHANGE
         run: |
-          echo ANYCHANGE:
-          echo $ANYCHANGE
+          echo "anychange: $ANYCHANGE"
 
       - name: Step runs
         id: running-step
