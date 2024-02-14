@@ -46,3 +46,11 @@ jobs:
       - name: Print my-changes aka. ANYCHANGE
         run: |
           echo "anychange: $ANYCHANGE"
+
+  job3:
+    name: Job 3
+    uses: ./.github/workflows/main.yml
+    with:
+      myboolean: $ {{ needs.job1.outputs.result }}
+        
+          
