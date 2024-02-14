@@ -51,6 +51,4 @@ jobs:
     name: Job 3
     uses: ./.github/workflows/main.yml
     with:
-      myboolean: ${{ needs.job1.outputs.result }}
-        
-          
+      myboolean: ${{ needs.job1.outputs.result == 'true' }}
