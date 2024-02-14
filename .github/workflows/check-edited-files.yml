@@ -9,7 +9,7 @@ jobs:
     name: Check py diff
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ needs.steps.check_change.outputs.my_changes }}
+      result: ${{ steps.check_change.outputs.my_changes }}
     permissions:
       contents: write
       pull-requests: write
