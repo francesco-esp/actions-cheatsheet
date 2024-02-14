@@ -1,5 +1,5 @@
 permissions:
-  contents: read
+  contents: write
 
 on:
   push:
@@ -22,11 +22,12 @@ jobs:
     name: Check py changes
     runs-on: ubuntu-latest
     permissions:
-      pull-requests: read
+      contents: write
+      pull-requests: write
     outputs:
       result: ${{ steps.filter.outputs.my-changes }}
     steps:
-      
+      - uses: actions/checkout@v2
       - uses: dorny/paths-filter@v2
         id: filter
         with:
