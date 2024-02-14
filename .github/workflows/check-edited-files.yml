@@ -16,12 +16,12 @@ on:
 
 jobs:
   changes-job:
-    name: Check for Django model changes
+    name: Check py changes
     runs-on: ubuntu-latest
     permissions:
       pull-requests: read
     outputs:
-      result: ${{ steps.filter.outputs.ma-changes }}
+      result: ${{ steps.filter.outputs.my-changes }}
     steps:
       - uses: dorny/paths-filter@v2
         id: filter
