@@ -36,6 +36,11 @@ jobs:
             my-changes:
               - 'folder/**/*.py'
 
+      - name: check output
+        env: 
+          MYOUTPUT: ${{ steps.check-change.outputs.my-changes }}
+        run: echo $MYOUTPUT
+
   test-job:
     name: Test Job
     runs-on: ubuntu-latest
