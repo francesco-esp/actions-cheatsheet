@@ -40,7 +40,7 @@ jobs:
 
     steps:
       - name: if check
-        if: ${{ needs.job1.outputs.result == 'false' }}
+        if: ${{ needs.job1.outputs.result == 'true' }}
         run: echo "result is false"
 
       - name: Print my-changes aka. ANYCHANGE
