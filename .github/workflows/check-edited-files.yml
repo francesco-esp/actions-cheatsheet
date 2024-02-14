@@ -22,7 +22,7 @@ jobs:
     name: Check py changes
     runs-on: ubuntu-latest
     outputs:
-      result: ${{ steps.check-change.outputs.my-changes }}
+      result: ${{ needs.steps.check-change.outputs.my-changes }}
     permissions:
       contents: write
       pull-requests: write
