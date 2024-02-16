@@ -36,6 +36,9 @@ jobs:
           echo cd
           cd
           echo pwd
+          pwd
+          echo ls -lha
+          ls -lha
       
       - name: Step boolean true
         if: ${{ inputs.myboolean }}
