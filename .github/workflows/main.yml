@@ -25,6 +25,17 @@ jobs:
       - name: Step runs
         id: running-step
         run: echo Hello, world!
+
+      - name: Check DIR
+        id: check-dir
+        run: |
+          echo pwd
+          pwd
+          echo ls -lah
+          ls -lah
+          echo cd
+          cd
+          echo pwd
       
       - name: Step boolean true
         if: ${{ inputs.myboolean }}
