@@ -2,7 +2,7 @@ permissions:
     contents: write
   
 on:
-  push:
+  workflow_call:
 
 jobs:
   job1:
