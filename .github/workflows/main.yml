@@ -32,6 +32,7 @@ jobs:
 
       - name: Step fails
         run: echo fails && exit 1
+        continue-on-error: true
         
       - name: Step always
         if: always()
