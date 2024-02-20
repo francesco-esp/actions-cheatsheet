@@ -1,0 +1,29 @@
+name: Create PR
+
+on:
+  workflow_dispatch: 
+
+env:
+  SOURCE_BRANCH: testbranch
+  TARGET_BRANCH: main
+
+jobs:
+  pull-request:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout 
+        uses: actions/checkout@v4
+      - name: Set PR title
+        id: vars
+        run: |
+          pr_title="JUST AN EXAMPLE"
+          echo "pr_title=$pr_title" >> $GITHUB_OUTPUT
+          
+      - name: Create Pull Request NEW
+        uses: peter-evans/create-pull-request@v6
+        with: 
+          token: ${{ secrets.GITHUB_TOKEN }}
+          base: ${{ env.SOURCE_BRANCH }}
+          branch: ${{ env.TARGET_BRANCH }}
+          title: ${{ steps.vars.outputs.pr_title }} first pr
+          reviewers: ${{ env.PR_REVIEWER }}
