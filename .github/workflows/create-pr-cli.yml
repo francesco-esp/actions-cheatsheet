@@ -13,9 +13,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
       - name: Create Pull Request
-        run: PR_TITLE="my title"
       - run: |
+          PR_TITLE="my title"
           gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH \
-            --title "$PR_TITLE" --body "robot pr"
+            --title "$PR_TITLE" --body ""
         env:
           GITHUB_TOKEN: ${{ github.token }}
