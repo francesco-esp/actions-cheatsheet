@@ -14,10 +14,10 @@ jobs:
       - uses: actions/checkout@v3
       - name: Set PR title
         run: |
-          pr_title="my title :)"
+          pr_title="my title"
           echo "pr_title=$pr_title" >> $GITHUB_OUTPUT
       - name: Create Pull Request
         run: |
-          gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH --title $pr_title --body "robot"
+          gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH --title "$pr_title" --body "robot pr"
         env:
           GITHUB_TOKEN: ${{ github.token }}
