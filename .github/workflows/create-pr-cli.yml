@@ -6,6 +6,7 @@ on:
 env:
   SOURCE_BRANCH: testbranch
   TARGET_BRANCH: main
+  REVIEWER: francesco-esp
 
 jobs:
   my-pr:
@@ -16,6 +17,6 @@ jobs:
         run: |
           PR_TITLE="my title"
           gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH \
-            --title "$PR_TITLE" --body ""
+            --title "$PR_TITLE" --body "" --reviewer "$REVIWER"
         env:
           GITHUB_TOKEN: ${{ github.token }}
