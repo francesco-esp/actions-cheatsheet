@@ -17,6 +17,6 @@ jobs:
         run: |
           PR_TITLE="my title"
           gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH \
-            --title "$PR_TITLE" --body "" --reviewer "$REVIWER"
+            --title "$PR_TITLE" --body "" --reviewer "$REVIEWER"
         env:
           GITHUB_TOKEN: ${{ github.token }}
