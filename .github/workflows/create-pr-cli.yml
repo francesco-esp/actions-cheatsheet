@@ -19,4 +19,6 @@ jobs:
       - name: Create Pull Request
         run: |
           gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH \
-          --title $pr_title --body ""
+          --title $pr_title --body "robot pr"
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
