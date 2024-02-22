@@ -1,0 +1,22 @@
+name: Create PR with CLI
+
+on:
+  workflow_dispatch: 
+
+env:
+  SOURCE_BRANCH: testbranch
+  TARGET_BRANCH: main
+
+jobs:
+  my-pr:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Set PR title
+        run: |
+          pr_title="my title :)"
+          echo "pr_title=$pr_title" >> $GITHUB_OUTPUT
+      - name: Create Pull Request
+        run: |
+          gh pr create --base $TARGET_BRANCH --head $SOURCE_BRANCH \
+          --title $pr_title --body ""
